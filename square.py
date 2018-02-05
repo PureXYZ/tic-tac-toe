@@ -13,7 +13,9 @@ class Square:
 		return self.__piece
 	
 	def set_piece(self, piece):
-		valid = piece != 'None' and piece in self.__piece_dict and self.__piece is None
+		valid = piece != 'None' \
+				and piece in self.__piece_dict \
+				and self.__piece is None
 		
 		if valid:
 			self.__piece = self.__piece_dict[piece]
