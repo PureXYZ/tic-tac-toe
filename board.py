@@ -50,11 +50,9 @@ class Board:
 			raise ValueError('Invalid Get Move Index')
 				  
 	def make_move(self, index, piece):
-		try:
-			self.__set_square(index, piece)
-			self.__last_move = index
-		except ValueError:
-			pass
+		self.__set_square(index, piece)
+		self.__last_move = index
+
 		
 	def get_valid_moves(self):
 		moves = []
@@ -76,7 +74,7 @@ class Board:
 				v += 1
 			if self.__rows[i][i].get_piece() == piece:
 				diag += 1
-			if self.__rows[self.__BOARD_SIZE - i - 1][self.__BOARD_SIZE - i - 1].get_piece() == piece:
+			if self.__rows[self.__BOARD_SIZE - i - 1][i].get_piece() == piece:
 				anti_diag += 1
 				
 		return h == 3 or v == 3 or diag == 3 or anti_diag == 3
@@ -124,4 +122,5 @@ class Board:
 				print('( ' + str(i) + ', ' + str(j) + '): ' + p + ' ', end = '')
 			print()
 		print(self.get_gamestate())
+		print('Last move: ' + str(self.get_last_move()))
 		print('==========================')
