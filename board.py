@@ -59,7 +59,7 @@ class Board:
 	def get_valid_moves(self):
 		moves = []
 		for key in self.__move_index:
-			if self.get_square(key) is not None:
+			if self.get_square(key) is None:
 				moves.append(key)
 		return moves
 		
